@@ -77,6 +77,9 @@ func (smb Samba) Init(params map[string]string, app *App) (IBackend, error) {
 				if params["username"] == "" {
 					return "Guest"
 				}
+				if strings.Contains(params["username"], "@") {
+					return strings.SplitN(params["username"], "@", 2)[0]
+				}
 				return params["username"]
 			}(),
 			Password: params["password"],
