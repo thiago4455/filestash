@@ -83,7 +83,7 @@ class ComponentBreadcrumb extends HTMLElement {
         assert.type(this.querySelector(`[data-bind="path"]`), HTMLElement).innerHTML = `
                 <div class="component_path-element n-1" data-path="/">
                     <div class="li component_path-element-wrapper component_path-wiki-link">
-                        <a class="label" aria-label="Home page" href="/" data-link draggable="false">
+                        <a class="label" aria-label="Home page" href="/" draggable="false">
                             <div>Wiki</div>
                         </a>
                         <div class="component_separator">
