@@ -80,7 +80,17 @@ class ComponentBreadcrumb extends HTMLElement {
         }
 
         // STEP2: setup the actual content
-        assert.type(this.querySelector(`[data-bind="path"]`), HTMLElement).innerHTML = pathChunks.map((chunk, idx) => {
+        assert.type(this.querySelector(`[data-bind="path"]`), HTMLElement).innerHTML = `
+                <div class="component_path-element n-1" data-path="/">
+                    <div class="li component_path-element-wrapper component_path-wiki-link">
+                        <a class="label" aria-label="Home page" href="/" data-link draggable="false">
+                            <div>Wiki</div>
+                        </a>
+                        <div class="component_separator">
+                            <img alt="path_separator" width="16" height="16" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAYAAAA7bUf6AAAA30lEQVQ4T63T7Q2CMBAG4OuVPdQNcAPdBCYwDdclCAQ3ACfRDXQDZQMHgNRcAoYApfWjv0jIPX3b3gn4wxJjI03TUAhRBkGwV0o9ffaYIEVRrJumuQHA3ReaILxzl+bCkNZ660ozi/QQIl4BoCKieAmyIlyU53lkjCld0CIyhIwxSmt9nEvkRLgoyzIuPggh4iRJqjHkhXTQAwBWUsqNUoq/38sL+TlJf7lf38ngdU5EFNme2adPFgGGrR2LiGcAqIko/LhjeXbatuVOraWUO58hnJ1iRKx8AetxXPHH/1+y62USursaSgAAAABJRU5ErkJggg==">
+                        </div>
+                    </div>
+                </div>` + pathChunks.map((chunk, idx) => {
             const label = idx === 0 ? getConfig("name", "Filestash") : chunk;
             const link = pathChunks.slice(0, idx + 1).join("/") + "/";
             const limitSize = (word, highlight = false) => {
